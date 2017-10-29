@@ -3,21 +3,41 @@ package books;
 /**
  * Book
  * 
- * Класс продукта - книга
+ * Класс "Книга"
  * 
  * 26.10.2017
  * 
  * @author Yuriy Sirotenko
- * @version 1.0
+ * @version 2.0
  */
-public class Book extends Product {
+public class Book extends PrintedProduct {
+	
+	/**
+	 * Типы обложек
+	 */
+	public enum Covers {
+		SOLID, SOFT
+	}
+	
+	/**
+	 * ISBN
+	 */
 	private String isbn;
 	
+	/**
+	 * Автор книги
+	 */
 	private String author;
 	
+	/**
+	 * Наименование книги
+	 */
 	private String name;
 	
-	private String cover;
+	/**
+	 * Тип обложки
+	 */
+	private Covers cover;
 	
 	/**
 	 * @param isbn
@@ -43,7 +63,7 @@ public class Book extends Product {
 	/**
 	 * @param cover
 	 */
-	public void setCover(String cover) {
+	public void setCover(Covers cover) {
 		this.cover = cover;
 	}
 	
@@ -71,15 +91,9 @@ public class Book extends Product {
 	/**
 	 * @return String
 	 */
-	public String getCover() {
+	public Covers getCover() {
 		return this.cover;
 	}
 	
-	@Override
-	public String toString() {
-		return "Book [isbn=" + this.isbn + ", author=" + this.author + 
-				", name=" + this.name + ", cover=" + this.cover + 
-				", price=" + this.getPrice() +", stock=" + this.isStock() + 
-				", currency=" + this.getCurrency() + "]";
-	}
+	
 }

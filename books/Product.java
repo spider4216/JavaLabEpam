@@ -3,19 +3,36 @@ package books;
 /**
  * Product
  * 
- * Абстрактный класс продукт
+ * Класс "Продукт выпускаемый издательсвом"
  * 
  * 26.10.2017
  * 
  * @author Yuriy Sirotenko
- * @version 1.0
+ * @version 2.0
  */
-public abstract class Product {
+public class Product extends PublishOffice {
+	
+	/**
+	 * Валюта
+	 */
+	public enum Curency {
+		KZT, RUB
+	}
+
+	/**
+	 * Цена
+	 */
 	private double price;
 	
+	/**
+	 * В наличии
+	 */
 	private boolean stock;
 	
-	private String currency;
+	/**
+	 * Валюта
+	 */
+	private Curency currency;
 	
 	/**
 	 * @param price
@@ -34,7 +51,7 @@ public abstract class Product {
 	/**
 	 * @param currency
 	 */
-	public void setCurrency(String currency) {
+	public void setCurrency(Curency currency) {
 		this.currency = currency;
 	}
 	
@@ -48,7 +65,7 @@ public abstract class Product {
 	/**
 	 * @return String
 	 */
-	public String getCurrency() {
+	public Curency getCurrency() {
 		return this.currency;
 	}
 	
