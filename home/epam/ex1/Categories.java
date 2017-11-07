@@ -1,4 +1,4 @@
-package com.epam.hm1;
+package home.epam.ex1;
 
 /**
  * Категории продукта
