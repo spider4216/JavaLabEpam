@@ -1,38 +1,47 @@
 package home.epam.ex1;
 
+import java.util.UUID;
+
 /**
- * Статус пользователей
+ * User
  * 
  * @author Yuriy Sirotenko
  */
 public class User {
 	
-	private Integer id;
+	/**
+	 * User ID
+	 */
+	private String id;
 
 	/**
-	 * Имя пользователя
+	 * User name
 	 */
 	private String username;
 	
 	/**
-	 * Пол
+	 * Gender
 	 */
-	private Genders gender;
+	private Gender gender;
 	
 	/**
-	 * Возраст
+	 * Age
 	 */
 	private Integer age;
 	
 	/**
-	 * Имя
+	 * First name
 	 */
 	private String firstName;
 	
 	/**
-	 * Фамилия
+	 * Last name
 	 */
 	private String lastName;
+	
+	public User() {
+		this.id = UUID.randomUUID().toString();
+	}
 
 	public String getUserName() {
 		return this.username;
@@ -42,11 +51,11 @@ public class User {
 		this.username = username;
 	}
 
-	public Genders getGender() {
+	public Gender getGender() {
 		return this.gender;
 	}
 
-	public void setGender(Genders gender) {
+	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
 	
@@ -74,11 +83,7 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public Integer getId() {
+	public String getId() {
 		return this.id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 }

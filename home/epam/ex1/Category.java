@@ -1,10 +1,10 @@
 package home.epam.ex1;
 
 /**
- * Категории продукта
+ * Categories's product
  * 
  * @author Yuriy Sirotenko
  */
-public enum Categories {
+public enum Category {
 	BIOGRAPHY, SCIENCE, FANTASTIC, 
 }

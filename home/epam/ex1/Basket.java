@@ -1,53 +1,55 @@
 package home.epam.ex1;
 
+import java.util.UUID;
+
 /**
- * Корзина пользователя
+ * Basket's user
  * 
  * @author Yuriy Sirotenko
  */
 public class Basket {
 	
 	/**
-	 * ID заказа в корзине
+	 * Order ID in basket
 	 */
-	private Integer id;
+	private String id;
 	
 	/**
-	 * ID продукта
+	 * Product ID
 	 */
-	private Integer productId;
+	private String productId;
 	
 	/**
-	 * ID пользователя
+	 * User ID
 	 */
-	private Integer userId;
+	private String userId;
 	
 	/**
-	 * Количество экземпляров
+	 * Count of copy
 	 */
 	private Integer count;
-
-	public Integer getId() {
-		return id;
+	
+	public Basket() {
+		this.id = UUID.randomUUID().toString();
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public String getId() {
+		return this.id;
 	}
 
-	public Integer getProductId() {
+	public String getProductId() {
 		return this.productId;
 	}
 
-	public void setProductId(Integer productId) {
+	public void setProductId(String productId) {
 		this.productId = productId;
 	}
 
-	public Integer getUserId() {
+	public String getUserId() {
 		return this.userId;
 	}
 
-	public void setUserId(Integer userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 

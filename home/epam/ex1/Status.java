@@ -1,10 +1,10 @@
 package home.epam.ex1;
 
 /**
- * Статусы заказа
+ * Invoice's statuses
  * 
  * @author Yuriy Sirotenko
  */
-public enum Statuses {
+public enum Status {
 	PENDING, REJECTED, ACCEPTED
 }

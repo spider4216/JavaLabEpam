@@ -1,61 +1,56 @@
 package home.epam.ex1;
 
+import java.util.UUID;
+
 /**
- * Счет
+ * Invoice
  * 
  * @author Yuriy Sirotenko
  */
 public class Invoice {
-	
+
 	/**
-	 * ID счета
+	 * Invoice ID
 	 */
-	private Integer id;
+	private String id;
 	
 	/**
-	 * ID пользователя
+	 * User ID
 	 */
-	private Integer userId;
+	private String userId;
 	
 	/**
-	 * Статус
+	 * Status
 	 */
-	private Statuses status;
+	private Status status;
 	
 	/**
-	 * Общая сумма
+	 * Total price of order
 	 */
 	private Double totalPrice;
+	
+	public Invoice() {
+		this.id = UUID.randomUUID().toString();
+	}
+	
+	public Invoice(String userId, Status status) {
+		this.userId = userId;
+		this.status = status;
+	}
 
 	public Double getTotalPrice() {
 		return this.totalPrice;
 	}
 
-	public void setTotalPrice(Double totalPrice) {
-		this.totalPrice = totalPrice;
-	}
-
-	public Integer getId() {
+	public String getId() {
 		return this.id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public Integer getUserId() {
+	public String getUserId() {
 		return this.userId;
 	}
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
-
-	public Statuses getStatus() {
+	public Status getStatus() {
 		return this.status;
-	}
-
-	public void setStatus(Statuses status) {
-		this.status = status;
 	}
 }

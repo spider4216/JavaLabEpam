@@ -1,10 +1,10 @@
 package home.epam.ex1;
 
 /**
- * Пол
+ * Gender's user
  * 
  * @author Yuriy Sirotenko
  */
-public enum Genders {
+public enum Gender {
 	MALE, FEMALE
 }

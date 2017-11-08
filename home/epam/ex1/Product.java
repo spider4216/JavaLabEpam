@@ -1,35 +1,47 @@
 package home.epam.ex1;
 
+import java.util.UUID;
+
 /**
- * Абстрактный класс продукта
+ * Abstracr class of product
  * 
  * @author Yuriy Sirotenko
  */
 abstract public class Product {
 	
-	private Integer id;
+	/**
+	 * Product ID
+	 */
+	private String id;
 	
 	/**
-	 * Наименование продукта
+	 * Product name
 	 */
 	private String name;
 	
 	/**
-	 * Цена продукта
+	 * Product's price
 	 */
 	private Double price;
 	
 	/**
-	 * Автор
+	 * Author
 	 */
 	private String author;
 	
 	/**
-	 * Категория продукта
+	 * Category's product
 	 */
-	private Categories[] categories = new Categories[10];
+	private Category[] categories = new Category[10];
 	
+	/**
+	 * Counter of categories
+	 */
 	private Integer index = 0;
+	
+	public Product() {
+		this.id = UUID.randomUUID().toString();
+	}
 	
 	public String getAuthor() {
 		return this.author;
@@ -55,19 +67,15 @@ abstract public class Product {
 		this.price = price;
 	}
 
-	public void setCategory(Categories category) {
+	public void setCategory(Category category) {
 		this.categories[this.index++] = category;
 	}
 	
-	public Categories[] getCategories() {
+	public Category[] getCategories() {
 		return this.categories;
 	}
 
-	public Integer getId() {
+	public String getId() {
 		return this.id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 }

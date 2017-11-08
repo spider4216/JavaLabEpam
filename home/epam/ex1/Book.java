@@ -1,19 +1,19 @@
 package home.epam.ex1;
 
 /**
- * Книга
+ * Book
  * 
  * @author Yuriy Sitotenko
  */
 public class Book extends Product {
 	
 	/**
-	 * ISBN книги
+	 * ISBN's book
 	 */
 	private String isbn;
 	
 	/**
-	 * Количество страниц
+	 * Page numbers
 	 */
 	private Integer pages;
 
