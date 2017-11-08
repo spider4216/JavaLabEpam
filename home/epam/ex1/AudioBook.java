@@ -7,7 +7,7 @@ package home.epam.ex1;
 public class AudioBook extends Book {
 	
 	/**
-	 * Suration of audio book in minutes
+	 * Duration of audio book in minutes
 	 */
 	private String duration;
 

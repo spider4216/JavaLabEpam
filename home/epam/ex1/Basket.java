@@ -25,7 +25,7 @@ public class Basket {
 	private String userId;
 	
 	/**
-	 * Count of copy
+	 * Count of copies
 	 */
 	private Integer count;
 	
