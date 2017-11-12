@@ -2,6 +2,7 @@ package app.entities;
 
 import java.util.UUID;
 
+import app.helpers.TextFormatHelper;
 import app.list.Category;
 
 /**
@@ -30,6 +31,11 @@ abstract public class Product {
 	 * Author
 	 */
 	private String author;
+	
+	/**
+	 * Product's description
+	 */
+	private String description;
 	
 	/**
 	 * Category's product
@@ -79,5 +85,13 @@ abstract public class Product {
 
 	public String getId() {
 		return this.id;
+	}
+
+	public String getDescription() {
+		return this.description;
+	}
+
+	public void setDescription(String description) {
+		this.description = TextFormatHelper.toUpperCaseInSentences(TextFormatHelper.removeHtmlTags(description));
 	}
 }

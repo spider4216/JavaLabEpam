@@ -13,6 +13,9 @@ public class Main {
 		book.setIsbn("123bb55");
 		book.setAuthor("Herbert Schildt");
 		book.setName("Java 8. The Complete Reference, 9th Edition");
+		book.setDescription("Fully <b>updated</b> for <strong>Java SE 8</strong>, Java: The Complete <i>Reference.</i>" +
+		"new Java SE 8 features such as lambda expressions. this Oracle Press resource also offers a solid introduction " +
+		"to <small>JavaFX</small>");
 		book.setPages(1376);
 		book.setCategory(Category.SCIENCE);
 		book.setCategory(Category.FANTASTIC);
@@ -31,6 +34,9 @@ public class Main {
 		basket.setProductId(book.getId());
 		
 		Invoice invoice = new Invoice(user.getId(), Status.PENDING);
+		
+		
+		System.out.println(book.getDescription());
 	}
 
 }
