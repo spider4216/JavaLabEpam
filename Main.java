@@ -1,4 +1,10 @@
-package home.epam.ex1;
+import app.entities.Basket;
+import app.entities.Book;
+import app.entities.Invoice;
+import app.entities.User;
+import app.list.Category;
+import app.list.Gender;
+import app.list.Status;
 
 public class Main {
 

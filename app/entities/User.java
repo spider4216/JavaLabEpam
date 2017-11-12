@@ -1,6 +1,8 @@
-package home.epam.ex1;
+package app.entities;
 
 import java.util.UUID;
+
+import app.list.Gender;
 
 /**
  * User

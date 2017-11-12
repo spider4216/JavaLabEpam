@@ -1,9 +1,11 @@
-package home.epam.ex1;
+package app.entities;
 
 import java.util.UUID;
 
+import app.list.Category;
+
 /**
- * Abstracr class of product
+ * Abstract class of product
  * 
  * @author Yuriy Sirotenko
  */

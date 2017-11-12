@@ -1,4 +1,4 @@
-package home.epam.ex1;
+package app.list;
 
 /**
  * Invoice's statuses
