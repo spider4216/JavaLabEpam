@@ -37,6 +37,7 @@ public class Main {
 		
 		
 		System.out.println(book.getDescription());
+		System.out.println(invoice.getCreatedDate());
 	}
 
 }

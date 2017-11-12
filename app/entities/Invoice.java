@@ -1,5 +1,7 @@
 package app.entities;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.UUID;
 
 import app.list.Status;
@@ -31,13 +33,16 @@ public class Invoice {
 	 */
 	private Double totalPrice;
 	
-	public Invoice() {
-		this.id = UUID.randomUUID().toString();
-	}
+	/**
+	 * Date when invoice was created
+	 */
+	private Date dateCreated;
 	
 	public Invoice(String userId, Status status) {
 		this.userId = userId;
 		this.status = status;
+		this.id = UUID.randomUUID().toString();
+		this.dateCreated = new Date();
 	}
 
 	public Double getTotalPrice() {
@@ -54,5 +59,10 @@ public class Invoice {
 
 	public Status getStatus() {
 		return this.status;
+	}
+	
+	public String getCreatedDate() {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("d.M.y");
+		return dateFormat.format(this.dateCreated);
 	}
 }
