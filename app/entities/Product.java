@@ -1,5 +1,6 @@
 package app.entities;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 import app.helpers.TextFormatHelper;
@@ -10,7 +11,7 @@ import app.list.Category;
  * 
  * @author Yuriy Sirotenko
  */
-abstract public class Product {
+abstract public class Product implements Serializable {
 	
 	/**
 	 * Product ID

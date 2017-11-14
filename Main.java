@@ -38,6 +38,11 @@ public class Main {
 		
 		System.out.println(book.getDescription());
 		System.out.println(invoice.getCreatedDate());
+		
+//		System.out.println(book.save());
+//		Book[] books = book.findAll();
+//		System.out.println(books[0].getName());
+		
 	}
 
 }
