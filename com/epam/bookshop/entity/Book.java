@@ -15,6 +15,8 @@ import java.io.ObjectOutputStream;
  */
 public class Book extends Product {
 	
+	private static final String DATA_PATH = "data/book/";
+	
 	/**
 	 * ISBN's book
 	 */
@@ -25,6 +27,9 @@ public class Book extends Product {
 	 */
 	private Integer pages;
 	
+	/**
+	 * Error message for save and find books
+	 */
 	private String errorMessage;
 	
 	public String getErrorMessage() {
@@ -47,14 +52,19 @@ public class Book extends Product {
 		this.pages = pages;
 	}
 	
+	/**
+	 * Save book in file (serialization)
+	 * 
+	 * @return
+	 */
 	public Boolean save() {
-		String fileName = this.getId();
+		String filePath = DATA_PATH + this.getId();
 		
-		try {
-			FileOutputStream fos = new FileOutputStream("data/book/" + fileName);
-			ObjectOutputStream  oos = new ObjectOutputStream(fos);
+		try (
+				FileOutputStream fos = new FileOutputStream(filePath);
+				ObjectOutputStream  oos = new ObjectOutputStream(fos);
+			) {
 			oos.writeObject(this);
-			// TODO try resources
 			fos.close();
 			oos.close();
 			
@@ -68,19 +78,24 @@ public class Book extends Product {
 		}
 	}
 	
+	/**
+	 * Get all books
+	 * 
+	 * @return
+	 */
 	public Book[] findAll() {
-		File file = new File("data/book");
+		File file = new File(DATA_PATH);
 		Book[] books = new Book[file.listFiles().length];
+		// count variable for loop
 		int i = 0;
-		// TODO try resources
 		
 		for (File item : file.listFiles()) {
 			String path = item.getPath();
 			
-			try {
-				FileInputStream fis = new FileInputStream(path);
-				ObjectInputStream ois = new ObjectInputStream(fis);
-
+			try (
+					FileInputStream fis = new FileInputStream(path);
+					ObjectInputStream ois = new ObjectInputStream(fis);
+				) {
 				books[i] = (Book)ois.readObject();
 
 				i++;
