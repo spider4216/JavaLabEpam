@@ -1,4 +1,4 @@
-package app.entities;
+package com.epam.bookshop.entity;
 
 import java.util.UUID;
 

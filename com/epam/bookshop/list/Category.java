@@ -1,4 +1,4 @@
-package app.list;
+package com.epam.bookshop.list;
 
 /**
  * Categories's product

@@ -1,8 +1,8 @@
-package app.entities;
+package com.epam.bookshop.entity;
 
 import java.util.UUID;
 
-import app.list.Gender;
+import com.epam.bookshop.list.Gender;
 
 /**
  * User

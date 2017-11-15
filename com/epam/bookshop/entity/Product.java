@@ -1,10 +1,10 @@
-package app.entities;
+package com.epam.bookshop.entity;
 
 import java.io.Serializable;
 import java.util.UUID;
 
-import app.helpers.TextFormatHelper;
-import app.list.Category;
+import com.epam.bookshop.helper.TextFormatHelper;
+import com.epam.bookshop.list.Category;
 
 /**
  * Abstract class of product

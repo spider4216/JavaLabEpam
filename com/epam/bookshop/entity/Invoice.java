@@ -1,10 +1,10 @@
-package app.entities;
+package com.epam.bookshop.entity;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
-import app.list.Status;
+import com.epam.bookshop.list.Status;
 
 /**
  * Invoice

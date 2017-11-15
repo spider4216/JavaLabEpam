@@ -1,10 +1,10 @@
-import app.entities.Basket;
-import app.entities.Book;
-import app.entities.Invoice;
-import app.entities.User;
-import app.list.Category;
-import app.list.Gender;
-import app.list.Status;
+import com.epam.bookshop.entity.Basket;
+import com.epam.bookshop.entity.Book;
+import com.epam.bookshop.entity.Invoice;
+import com.epam.bookshop.entity.User;
+import com.epam.bookshop.list.Category;
+import com.epam.bookshop.list.Gender;
+import com.epam.bookshop.list.Status;
 
 public class Main {
 

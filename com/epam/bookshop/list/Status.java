@@ -1,4 +1,4 @@
-package app.list;
+package com.epam.bookshop.list;
 
 /**
  * Invoice's statuses

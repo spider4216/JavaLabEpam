@@ -1,4 +1,4 @@
-package app.helpers;
+package com.epam.bookshop.helper;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -9,6 +9,8 @@ import java.util.regex.Pattern;
  * @author Yuriy Sirotenko
  */
 public class TextFormatHelper {
+	
+	private static final String DELIMETER_SENTENCE = ". ";
 	
 	/**
 	 * Remove all HTML tags from string
@@ -42,7 +44,7 @@ public class TextFormatHelper {
 		for (String item : sentences) {
 			String prepareText = item.trim().substring(0, 1).toUpperCase() + item.trim().substring(1);
 			
-			finalText.append(prepareText).append(". ");
+			finalText.append(prepareText).append(DELIMETER_SENTENCE);
 		}
 		
 		return finalText.toString();
