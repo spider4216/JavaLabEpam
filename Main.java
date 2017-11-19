@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import com.epam.bookshop.entity.Basket;
 import com.epam.bookshop.entity.Book;
 import com.epam.bookshop.entity.Invoice;
@@ -40,8 +42,8 @@ public class Main {
 		System.out.println(invoice.getCreatedDate());
 		
 //		System.out.println(book.save());
-//		Book[] books = book.findAll();
-//		System.out.println(books[0].getName());
+//		ArrayList<Book> books = book.findAll();
+//		System.out.println(books.get(1).getName());
 		
 	}
 

@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 /**
  * Book
@@ -83,11 +84,10 @@ public class Book extends Product {
 	 * 
 	 * @return
 	 */
-	public Book[] findAll() {
+	public ArrayList<Book> findAll() {
 		File file = new File(DATA_PATH);
-		Book[] books = new Book[file.listFiles().length];
-		// count variable for loop
-		int i = 0;
+		// create collection with particular capacity
+		ArrayList<Book> books = new ArrayList<Book>(file.listFiles().length);
 		
 		for (File item : file.listFiles()) {
 			String path = item.getPath();
@@ -96,18 +96,16 @@ public class Book extends Product {
 					FileInputStream fis = new FileInputStream(path);
 					ObjectInputStream ois = new ObjectInputStream(fis);
 				) {
-				books[i] = (Book)ois.readObject();
-
-				i++;
+				books.add((Book)ois.readObject());
 			} catch (FileNotFoundException e) {
 				this.errorMessage = e.getMessage();
-				return new Book[0];
+				return new ArrayList<Book>();
 			} catch (ClassNotFoundException e) {
 				this.errorMessage = e.getMessage();
-				return new Book[0];
+				return new ArrayList<Book>();
 			} catch (IOException e) {
 				this.errorMessage = e.getMessage();
-				return new Book[0];
+				return new ArrayList<Book>();
 			}
 		}
 
