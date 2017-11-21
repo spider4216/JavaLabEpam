@@ -18,6 +18,10 @@ public class Book extends Product {
 	
 	private static final String DATA_PATH = "data/book/";
 	
+	private static final String ERR_MESSAGE_FIND = "Ошибка при поиске книг";
+	
+	private static final String ERR_MESSAGE_SAVE = "Ошибка при сохранении";
+	
 	/**
 	 * ISBN's book
 	 */
@@ -58,7 +62,7 @@ public class Book extends Product {
 	 * 
 	 * @return
 	 */
-	public Boolean save() {
+	public Boolean save() throws Exception {
 		String filePath = DATA_PATH + this.getId();
 		
 		try (
@@ -71,11 +75,9 @@ public class Book extends Product {
 			
 			return true;
 		} catch (FileNotFoundException e) {
-			this.errorMessage = e.getMessage();
-			return false;
+			throw new Exception(ERR_MESSAGE_SAVE, e);
 		} catch (IOException e) {
-			this.errorMessage = e.getMessage();
-			return false;
+			throw new Exception(ERR_MESSAGE_SAVE, e);
 		}
 	}
 	
@@ -84,7 +86,7 @@ public class Book extends Product {
 	 * 
 	 * @return
 	 */
-	public ArrayList<Book> findAll() {
+	public ArrayList<Book> findAll() throws Exception {
 		File file = new File(DATA_PATH);
 		// create collection with particular capacity
 		ArrayList<Book> books = new ArrayList<Book>(file.listFiles().length);
@@ -97,15 +99,10 @@ public class Book extends Product {
 					ObjectInputStream ois = new ObjectInputStream(fis);
 				) {
 				books.add((Book)ois.readObject());
-			} catch (FileNotFoundException e) {
-				this.errorMessage = e.getMessage();
-				return new ArrayList<Book>();
-			} catch (ClassNotFoundException e) {
-				this.errorMessage = e.getMessage();
-				return new ArrayList<Book>();
+			} catch (FileNotFoundException | ClassNotFoundException e) {
+				throw new Exception(ERR_MESSAGE_FIND, e);
 			} catch (IOException e) {
-				this.errorMessage = e.getMessage();
-				return new ArrayList<Book>();
+				throw new Exception(ERR_MESSAGE_FIND, e);
 			}
 		}
 
