@@ -7,6 +7,7 @@ import com.epam.bookshop.entity.User;
 import com.epam.bookshop.list.Category;
 import com.epam.bookshop.list.Gender;
 import com.epam.bookshop.list.Status;
+import com.epam.bookshop.services.BookService;
 
 public class Main {
 
@@ -41,10 +42,24 @@ public class Main {
 		System.out.println(book.getDescription());
 		System.out.println(invoice.getCreatedDate());
 		
-//		System.out.println(book.save());
-//		ArrayList<Book> books = book.findAll();
-//		System.out.println(books.get(1).getName());
+		// If you want to use save or get books uncomment this
+//		BookService bookService = new BookService();
+//		bookService.setBook(book);
 		
+//		try {
+//			System.out.println(bookService.save());
+//		} catch (Exception e) {
+//			System.out.println(e.getMessage());
+//		}
+		
+		
+//		try {
+//			ArrayList<Book> books = bookService.findAll();
+//			
+//			System.out.println(books.get(1).getName());
+//		} catch (Exception e) {
+//			System.out.println(e.getMessage());
+//		}
 	}
 
 }
