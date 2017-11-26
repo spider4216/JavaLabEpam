@@ -16,7 +16,7 @@ abstract public class Product implements Serializable {
 	/**
 	 * Product ID
 	 */
-	private String id;
+	private Integer id;
 	
 	/**
 	 * Product name
@@ -47,10 +47,6 @@ abstract public class Product implements Serializable {
 	 * Counter of categories
 	 */
 	private Integer index = 0;
-	
-	public Product() {
-		this.id = UUID.randomUUID().toString();
-	}
 	
 	public String getAuthor() {
 		return this.author;
@@ -83,8 +79,12 @@ abstract public class Product implements Serializable {
 	public Category[] getCategories() {
 		return this.categories;
 	}
+	
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-	public String getId() {
+	public Integer getId() {
 		return this.id;
 	}
 

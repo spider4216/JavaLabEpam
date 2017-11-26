@@ -7,7 +7,9 @@ import com.epam.bookshop.entity.Book;
 public interface BookDAO {
 	public Integer insertBook() throws Exception;
 	
-	public Boolean deleteBook();
+	public Boolean deleteBook() throws Exception;
 	
 	public ArrayList<Book> findBooks();
+	
+	public Book findBook(Integer id) throws Exception;
 }

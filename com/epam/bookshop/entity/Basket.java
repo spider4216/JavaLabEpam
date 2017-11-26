@@ -17,7 +17,7 @@ public class Basket {
 	/**
 	 * Product ID
 	 */
-	private String productId;
+	private Integer productId;
 	
 	/**
 	 * User ID
@@ -37,11 +37,11 @@ public class Basket {
 		return this.id;
 	}
 
-	public String getProductId() {
+	public Integer getProductId() {
 		return this.productId;
 	}
 
-	public void setProductId(String productId) {
+	public void setProductId(Integer productId) {
 		this.productId = productId;
 	}
 

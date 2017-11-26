@@ -42,6 +42,11 @@ public class TextFormatHelper {
 		StringBuffer finalText = new StringBuffer();
 		
 		for (String item : sentences) {
+			
+			if (item.trim().isEmpty()) {
+				continue;
+			}
+
 			String prepareText = item.trim().substring(0, 1).toUpperCase() + item.trim().substring(1);
 			
 			finalText.append(prepareText).append(DELIMETER_SENTENCE);

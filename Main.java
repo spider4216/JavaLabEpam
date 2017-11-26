@@ -46,11 +46,20 @@ public class Main {
 		bookDAO.setBookEntity(book);
 
 		try {
-			bookDAO.insertBook();
+//			bookDAO.insertBook();
+			
+			Integer bookNumber = 3;
+			Book myBook = bookDAO.findBook(bookNumber);
+
+			System.out.println(myBook.getName());
+
+			bookDAO.setBookEntity(myBook);
+			
+			if (bookDAO.deleteBook() == true) {
+				System.out.println("Книга успешно удалена");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		System.out.println("Книга была успешно сохранена");		
 	}
 }
