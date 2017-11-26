@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 
+import com.epam.bookshop.component.dao.book.BookDAO;
+import com.epam.bookshop.component.dao.book.MYSQLBookDAO;
+import com.epam.bookshop.component.dao.factory.DAOFactory;
 import com.epam.bookshop.entity.Basket;
 import com.epam.bookshop.entity.Book;
 import com.epam.bookshop.entity.Invoice;
@@ -37,29 +40,17 @@ public class Main {
 		basket.setProductId(book.getId());
 		
 		Invoice invoice = new Invoice(user.getId(), Status.PENDING);
-		
-		
-		System.out.println(book.getDescription());
-		System.out.println(invoice.getCreatedDate());
-		
-		// If you want to use save or get books uncomment this
-//		BookService bookService = new BookService();
-//		bookService.setBook(book);
-		
-//		try {
-//			System.out.println(bookService.save());
-//		} catch (Exception e) {
-//			System.out.println(e.getMessage());
-//		}
-		
-		
-//		try {
-//			ArrayList<Book> books = bookService.findAll();
-//			
-//			System.out.println(books.get(1).getName());
-//		} catch (Exception e) {
-//			System.out.println(e.getMessage());
-//		}
-	}
 
+		DAOFactory MYSQLFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		MYSQLBookDAO bookDAO = (MYSQLBookDAO)MYSQLFactory.getBookDAO();
+		bookDAO.setBookEntity(book);
+
+		try {
+			bookDAO.insertBook();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		System.out.println("Книга была успешно сохранена");		
+	}
 }
