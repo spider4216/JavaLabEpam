@@ -12,22 +12,8 @@ public class MYSQLBookDAO implements IBookDAO {
 	
 	private Connection connection = null;
 	
-	private Book entity = null;
-	
-	public static final Integer COLUMN_ID = 1;
-	
-	public static final Integer COLUMN_NAME = 1;
+	private Book entity = null;	
 
-	public static final Integer COLUMN_PRICE = 2;
-
-	public static final Integer COLUMN_AUTHOR = 3;
-
-	public static final Integer COLUMN_DESCRIPTION = 4;
-
-	public static final Integer COLUMN_ISBN = 5;
-
-	public static final Integer COLUMN_PAGES = 6;
-	
 	public MYSQLBookDAO(Connection connection) {
 		this.connection = connection;
 	}
@@ -41,12 +27,12 @@ public class MYSQLBookDAO implements IBookDAO {
 		
 		try {
 			PreparedStatement pr = connection.prepareStatement(sqlInsert);
-			pr.setString(COLUMN_NAME, entity.getName());
-			pr.setDouble(COLUMN_PRICE, entity.getPrice());
-			pr.setString(COLUMN_AUTHOR, entity.getAuthor());
-			pr.setString(COLUMN_DESCRIPTION, entity.getDescription());
-			pr.setString(COLUMN_ISBN, entity.getIsbn());
-			pr.setInt(COLUMN_PAGES, entity.getPages());
+			pr.setString(1, entity.getName());
+			pr.setDouble(2, entity.getPrice());
+			pr.setString(3, entity.getAuthor());
+			pr.setString(4, entity.getDescription());
+			pr.setString(5, entity.getIsbn());
+			pr.setInt(6, entity.getPages());
 			
 			return pr.executeUpdate();
 		} catch (SQLException e) {
@@ -60,7 +46,7 @@ public class MYSQLBookDAO implements IBookDAO {
 		
 		try {
 			PreparedStatement pr = connection.prepareStatement(sqlDelete);
-			pr.setInt(COLUMN_ID, entity.getId());
+			pr.setInt(1, entity.getId());
 			
 			pr.executeUpdate();
 			return true;
@@ -78,11 +64,13 @@ public class MYSQLBookDAO implements IBookDAO {
 		
 		try {
 			PreparedStatement pr = connection.prepareStatement(sqlFind);
-			pr.setInt(COLUMN_ID, id);
+			pr.setInt(1, id);
 			
 			ResultSet rs = pr.executeQuery();
 			rs.next();
 			Book book = new Book();
+			
+			// TODO вынести в другое место. Сделать как билдер. Но вот куда?
 			book.setId(rs.getInt("id"));
 			book.setName(rs.getString("name"));
 			book.setPrice(rs.getDouble("price"));
