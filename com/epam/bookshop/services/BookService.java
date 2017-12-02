@@ -1,14 +1,7 @@
 package com.epam.bookshop.services;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-
+import com.epam.bookshop.component.dao.book.MYSQLBookDAO;
+import com.epam.bookshop.component.dao.factory.DAOFactory;
 import com.epam.bookshop.entity.Book;
 
 /**
@@ -17,68 +10,31 @@ import com.epam.bookshop.entity.Book;
  * @author Yuriy Sirotenko
  */
 public class BookService {
+	private MYSQLBookDAO bookDAO;
 	
-	private static final String DATA_PATH = "data/book/";
-	
-	private static final String ERR_MESSAGE_FIND = "Ошибка при поиске книг";
-	
-	private static final String ERR_MESSAGE_SAVE = "Ошибка при сохранении";
-	
-	private Book book;
-	
-	public void setBook(Book book) {
-		this.book = book;
+	public BookService(Book entity) {
+		DAOFactory MYSQLFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		bookDAO = (MYSQLBookDAO)MYSQLFactory.getBookDAO();
+		bookDAO.setBookEntity(entity);
 	}
 	
-	/**
-	 * Save book in file (serialization)
-	 * 
-	 * @return
-	 */
-	public Boolean save() throws Exception {
-		String filePath = DATA_PATH + this.book.getId();
+	public Boolean insert(Book entity) throws Exception {
+		Integer res = bookDAO.insertBook();
 		
-		try (
-				FileOutputStream fos = new FileOutputStream(filePath);
-				ObjectOutputStream  oos = new ObjectOutputStream(fos);
-			) {
-			oos.writeObject(this.book);
-			fos.close();
-			oos.close();
-			
-			return true;
-		} catch (FileNotFoundException e) {
-			throw new Exception(ERR_MESSAGE_SAVE, e);
-		} catch (IOException e) {
-			throw new Exception(ERR_MESSAGE_SAVE, e);
+		if (res <= 0) {
+			return false;
 		}
+		
+		return true;
 	}
 	
-	/**
-	 * Get all books
-	 * 
-	 * @return
-	 */
-	public ArrayList<Book> findAll() throws Exception {
-		File file = new File(DATA_PATH);
-		// create collection with particular capacity
-		ArrayList<Book> books = new ArrayList<Book>(file.listFiles().length);
+	public Boolean delete(Book entity) throws Exception {
+		bookDAO.setBookEntity(entity);
 		
-		for (File item : file.listFiles()) {
-			String path = item.getPath();
-			
-			try (
-					FileInputStream fis = new FileInputStream(path);
-					ObjectInputStream ois = new ObjectInputStream(fis);
-				) {
-				books.add((Book)ois.readObject());
-			} catch (FileNotFoundException | ClassNotFoundException e) {
-				throw new Exception(ERR_MESSAGE_FIND, e);
-			} catch (IOException e) {
-				throw new Exception(ERR_MESSAGE_FIND, e);
-			}
-		}
-
-		return books;
+		return bookDAO.deleteBook();
+	}
+	
+	public Book findById(Integer id) throws Exception {
+		return bookDAO.findBook(id);
 	}
 }

@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-import com.epam.bookshop.component.dao.book.BookDAO;
+import com.epam.bookshop.component.dao.book.IBookDAO;
 import com.epam.bookshop.component.dao.book.MYSQLBookDAO;
 import com.epam.bookshop.component.dao.factory.DAOFactory;
 import com.epam.bookshop.entity.Basket;
@@ -41,23 +41,9 @@ public class Main {
 		
 		Invoice invoice = new Invoice(user.getId(), Status.PENDING);
 
-		DAOFactory MYSQLFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
-		MYSQLBookDAO bookDAO = (MYSQLBookDAO)MYSQLFactory.getBookDAO();
-		bookDAO.setBookEntity(book);
-
 		try {
-//			bookDAO.insertBook();
-			
-			Integer bookNumber = 3;
-			Book myBook = bookDAO.findBook(bookNumber);
-
-			System.out.println(myBook.getName());
-
-			bookDAO.setBookEntity(myBook);
-			
-			if (bookDAO.deleteBook() == true) {
-				System.out.println("Книга успешно удалена");
-			}
+			BookService bs = new BookService(book);
+			bs.insert(book);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.epam.bookshop.entity.Book;
 
-public interface BookDAO {
+public interface IBookDAO {
 	public Integer insertBook() throws Exception;
 	
 	public Boolean deleteBook() throws Exception;

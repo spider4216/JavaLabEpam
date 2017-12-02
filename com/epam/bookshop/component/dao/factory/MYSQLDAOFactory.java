@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-import com.epam.bookshop.component.dao.book.BookDAO;
+import com.epam.bookshop.component.dao.book.IBookDAO;
 import com.epam.bookshop.component.dao.book.MYSQLBookDAO;
 
 public class MYSQLDAOFactory extends DAOFactory {
@@ -30,7 +30,7 @@ public class MYSQLDAOFactory extends DAOFactory {
 		return DriverManager.getConnection(url, user, pass);
 	}
 
-	public BookDAO getBookDAO() {
+	public IBookDAO getBookDAO() {
 		Connection con = null;
 		try {
 			con = createConnection();

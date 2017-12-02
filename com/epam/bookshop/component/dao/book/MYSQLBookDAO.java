@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import com.epam.bookshop.entity.Book;
 
-public class MYSQLBookDAO implements BookDAO {
+public class MYSQLBookDAO implements IBookDAO {
 	
 	private Connection connection = null;
 	
@@ -37,16 +37,16 @@ public class MYSQLBookDAO implements BookDAO {
 	}
 
 	public Integer insertBook() throws Exception {
-		String sql = "INSERT INTO books (name, price, author, description, isbn, pages) VALUES (?, ?, ?, ?, ?, ?)";
+		String sqlInsert = "INSERT INTO books (name, price, author, description, isbn, pages) VALUES (?, ?, ?, ?, ?, ?)";
 		
 		try {
-			PreparedStatement pr = this.connection.prepareStatement(sql);
-			pr.setString(this.COLUMN_NAME, this.entity.getName());
-			pr.setDouble(this.COLUMN_PRICE, this.entity.getPrice());
-			pr.setString(this.COLUMN_AUTHOR, this.entity.getAuthor());
-			pr.setString(this.COLUMN_DESCRIPTION, this.entity.getDescription());
-			pr.setString(this.COLUMN_ISBN, this.entity.getIsbn());
-			pr.setInt(this.COLUMN_PAGES, this.entity.getPages());
+			PreparedStatement pr = connection.prepareStatement(sqlInsert);
+			pr.setString(COLUMN_NAME, entity.getName());
+			pr.setDouble(COLUMN_PRICE, entity.getPrice());
+			pr.setString(COLUMN_AUTHOR, entity.getAuthor());
+			pr.setString(COLUMN_DESCRIPTION, entity.getDescription());
+			pr.setString(COLUMN_ISBN, entity.getIsbn());
+			pr.setInt(COLUMN_PAGES, entity.getPages());
 			
 			return pr.executeUpdate();
 		} catch (SQLException e) {
@@ -56,11 +56,11 @@ public class MYSQLBookDAO implements BookDAO {
 
 	// TODO not checking
 	public Boolean deleteBook() throws Exception {
-		String sql = "DELETE FROM books WHERE id = ?";
+		String sqlDelete = "DELETE FROM books WHERE id = ?";
 		
 		try {
-			PreparedStatement pr = this.connection.prepareStatement(sql);
-			pr.setInt(this.COLUMN_ID, this.entity.getId());
+			PreparedStatement pr = connection.prepareStatement(sqlDelete);
+			pr.setInt(COLUMN_ID, entity.getId());
 			
 			pr.executeUpdate();
 			return true;
@@ -74,11 +74,11 @@ public class MYSQLBookDAO implements BookDAO {
 	}
 	
 	public Book findBook(Integer id) throws Exception {
-		String sql = "SELECT * FROM books WHERE id = ?";
+		String sqlFind = "SELECT * FROM books WHERE id = ?";
 		
 		try {
-			PreparedStatement pr = this.connection.prepareStatement(sql);
-			pr.setInt(this.COLUMN_ID, id);
+			PreparedStatement pr = connection.prepareStatement(sqlFind);
+			pr.setInt(COLUMN_ID, id);
 			
 			ResultSet rs = pr.executeQuery();
 			rs.next();
