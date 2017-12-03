@@ -6,6 +6,7 @@ import javax.xml.XMLConstants;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+import javax.xml.stream.XMLStreamException;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
@@ -24,6 +25,7 @@ import com.epam.bookshop.list.Status;
 import com.epam.bookshop.services.BookService;
 import com.epam.homework.task5.PublicationBean;
 import com.epam.homework.task5.SAXExample;
+import com.epam.homework.task5.StAXExample;
 
 public class Main {
 
@@ -61,6 +63,7 @@ public class Main {
 //			e.printStackTrace();
 //		}
 		
+		// SAX
 		SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 		Schema schema = sf.newSchema(new File("com/epam/homework/task5/xml/schema/publication_schema.xsd"));
 		SAXParserFactory spf = SAXParserFactory.newInstance();
@@ -75,5 +78,19 @@ public class Main {
 		for (PublicationBean publication : publications) {
 			System.out.println(publication.getTitle());
 		}
+		
+		StAXExample ste = new StAXExample();
+		try {
+			ste.parse();
+		} catch (XMLStreamException e) {
+			e.printStackTrace();
+		}
+		
+		for (PublicationBean publication : ste.getPublications()) {
+			System.out.println(publication.getTitle());
+		}
+		
+		
+		
 	}
 }
