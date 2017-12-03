@@ -1,11 +1,15 @@
 package com.epam.homework.task5;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -17,6 +21,11 @@ public class DOMExample {
 	
 	public void parse() throws ParserConfigurationException, SAXException, IOException {
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+		Schema schema = sf.newSchema(new File("com/epam/homework/task5/xml/schema/publication_schema.xsd"));
+		dbf.setSchema(schema);
+		dbf.setValidating(false);
+		dbf.setNamespaceAware(true);
 		DocumentBuilder db = dbf.newDocumentBuilder();
 		Document document = db.parse("com/epam/homework/task5/xml/source/publication.xml");
 		Element root = document.getDocumentElement();
