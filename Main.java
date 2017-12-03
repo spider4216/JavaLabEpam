@@ -23,6 +23,7 @@ import com.epam.bookshop.list.Category;
 import com.epam.bookshop.list.Gender;
 import com.epam.bookshop.list.Status;
 import com.epam.bookshop.services.BookService;
+import com.epam.homework.task5.DOMExample;
 import com.epam.homework.task5.PublicationBean;
 import com.epam.homework.task5.SAXExample;
 import com.epam.homework.task5.StAXExample;
@@ -90,7 +91,12 @@ public class Main {
 			System.out.println(publication.getTitle());
 		}
 		
+		DOMExample de = new DOMExample();
+		de.parse();
 		
+		for (PublicationBean publication : de.getPublications()) {
+			System.out.println(publication.getTitle());
+		}
 		
 	}
 }
